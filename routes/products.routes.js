@@ -1,18 +1,22 @@
 const express=require("express");
 const {Product}=require("../models/index.model")
+const ProductsControllers=require("../controllers/products.controllers")
+const Status=require("../models/status.model")
 
 const productRouter=express.Router();
 
-//EJEMPLO PARA VER QUE IMPACTA EN MONGO
 
-productRouter.post("/add",(req,res)=>{
-    const {name,colours,category}=req.body
-    Product.create({name,colours,category})
-    .then((product)=>{res.status(201).json({product,message:"Producto agregado"})})
-    .catch((error)=>{
-      res.status(500).json({message:"Errror al agregar el producto"})
-      console.log(error)
-    })
+productRouter.post("/add", ProductsControllers.addProduct)
+productRouter.get("/all", ProductsControllers.getProducts)
+
+
+/// ruta prueba
+productRouter.post("/ocupied",(req,res)=>{
+    const {date,product_id}=req.body
+
+    Status.create({date,product_id})
+    .then((response)=>{res.status(201).json(response)})
+    .catch((error)=>{console.log(error)})
 
 })
 

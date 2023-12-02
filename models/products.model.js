@@ -5,12 +5,21 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
+      unique:true
     },
     category: {
         type: String,
         required: true,
       },
-      colours: {
+      sub_category: {
+        type: String,
+        required: true,
+      },
+      colour: {
+        type: String,
+        required: true,
+      },
+      url_img: {
         type: String,
         required: true,
       },
