@@ -18,10 +18,10 @@ class ProductControllers{
     }
 
     static async getProducts(req,res){
-        const {category,sub_category,colour,availableFrom,availableUntil}=req.query
+        const {category,sub_category,colour}=req.query
 
         try{
-            const products=await ProductServices.getProducts({category,sub_category,colour,availableFrom,availableUntil})
+            const products=await ProductServices.getProducts({category,sub_category,colour})
 
             res.status(200).json(products)
 
