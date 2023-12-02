@@ -9,6 +9,8 @@ const productRouter=express.Router();
 productRouter.post("/add", ProductsControllers.addProduct)
 productRouter.get("/all", ProductsControllers.getProducts)
 
+
+/// ruta prueba
 productRouter.post("/ocupied",(req,res)=>{
     const {date,product_id}=req.body
 

@@ -50,35 +50,11 @@ class ProductServices{
             }
 
             ////////////in progress
-            if(availableFrom && availableUntil  ){
+           /* if(availableFrom && availableUntil  ){
 
-              const arrayFechas=intervaloDeFechas(availableFrom,availableUntil);
-            
-            const products= await Product.find(searchQuerys)
-          
-            const productsId=products.map((product)=>{return product._id.toString()})
-        
-
-            const resultado=[];
-
-            for(let i=0; i<productsId.length;i++){
-
-              resultado.push(arrayFechas.map(async (date)=>{ return await Status.find({date,product_id:productsId[i]})}))
-            
-            }
-
-            const resultadoFinal=[]
-
-            for(let i=0; i<resultado.length;i++){
               
-              console.log("promises============>",await Promise.all(resultado[i]))
-              resultadoFinal.push(await Promise.all(resultado[i]))
-            }
 
-
-            return resultadoFinal
-
-            }
+            }*/
 
 
             const products= await Product.find(searchQuerys)
