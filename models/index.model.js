@@ -1,3 +1,4 @@
 const Product=require("./products.model")
+const Status=require("./status.model")
 
-module.exports={Product}
+module.exports={Product,Status}
