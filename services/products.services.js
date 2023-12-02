@@ -1,5 +1,4 @@
-const {Product, Status}=require("../models/index.model")
-const {intervaloDeFechas}=require("../utils/auxiliarFunctions")
+const {Product}=require("../models/index.model")
 
 
 class ProductServices{
@@ -33,7 +32,7 @@ class ProductServices{
 
     static async getProducts(data){
 
-        const {category,sub_category,colour,availableFrom,availableUntil}=data
+        const {category,sub_category,colour}=data
 
         try{
 
@@ -49,17 +48,7 @@ class ProductServices{
                 searchQuerys.colour=colour
             }
 
-            ////////////in progress
-           /* if(availableFrom && availableUntil  ){
-
-              
-
-            }*/
-
-
             const products= await Product.find(searchQuerys)
-            const productsId=products.map((product)=>{return product._id.toString()})
-
 
                 return products
         
