@@ -63,6 +63,61 @@ class ProductServices{
             }
           }
     }
+
+    static async editProduct(data,id){
+
+      const {category,sub_category,colour,name,url_img}=data
+      
+
+      try{
+
+        const productModified= await Product.findById(id);
+        if(!productModified){
+          throw new Error ("Producto no encontrado")
+        }
+        productModified.category=category;
+        productModified.sub_category=sub_category;
+        productModified.colour=colour;
+        productModified.name=name;
+        productModified.url_img=url_img;
+
+        return productModified.save()
+
+      }
+      catch (error) {
+      
+        if (error.response && error.response.data) {
+          throw new Error(error.response.data);
+        } else {
+          throw error;
+        }
+      }
+    }
+
+    static async deleteProduct(id){
+      try{
+        const product= await Product.findById(id)
+
+        if(!product){
+          throw new Error ("Producto no encontrado")
+        }
+
+        const deleteProduct=await Product.deleteOne({_id:id});
+       
+
+        return product
+      }
+
+      catch (error) {
+      
+        if (error.response && error.response.data) {
+          throw new Error(error.response.data);
+        } else {
+          throw error;
+        }
+      }
+
+    }
 }
 
 module.exports=ProductServices;
