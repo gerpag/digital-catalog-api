@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
           subCategory,
           material,
           description,
-          color,
+          colour,
           dimensions,
           quantity,
         } = req.body;
@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
             subCategory,
             material,
             description,
-            color,
+            colour,
             dimensions,
             quantity,
             url_img,

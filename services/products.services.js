@@ -12,7 +12,7 @@ class ProductServices {
       subCategory,
       material,
       description,
-      color,
+      colour,
       dimensions,
       quantity,
       url_img,
