@@ -46,7 +46,7 @@ class ProductServices {
         throw error;
       }
     }
-  
+  }
 
   static async getProducts(data) {
     const { category, subCategory, colour } = data;
