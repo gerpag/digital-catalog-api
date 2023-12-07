@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model");
+const { generateJWT, verifyJWT } = require("../helpers/helpers.jwt");
 
 class UserServices {
   static async newUser({ name, lastName, email, password, salt, is_admin }) {
@@ -27,12 +28,19 @@ class UserServices {
     if (!isValidPassword) {
       throw new Error("Credenciales inválidas");
     }
-
     return {
       _id: user._id,
       email: user.email,
       is_admin: user.is_admin,
+      token: generateJWT(user._id, user.is_admin),
     };
+  }
+  static async verifyAdmin(token) {
+    if (!token) {
+      throw new Error("Token no encontrado");
+    }
+    const decodedToken = verifyJWT(token);
+    return decodedToken;
   }
 }
 module.exports = UserServices;

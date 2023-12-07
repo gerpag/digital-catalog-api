@@ -43,6 +43,28 @@ class UserControllers {
       res.status(401).json({ error: error.message });
     }
   }
+  static async user(req, res) {
+    try {
+      const token = req.cookies.token;
+
+      if (!token) {
+        throw new Error("Token no encontrado en las cookies");
+      }
+
+      const userDataOfToken = await UserServices.verifyAdmin(token);
+      return res.status(200).json(userDataOfToken);
+    } catch (error) {
+      return res.status(401).json({ error: error.message });
+    }
+  }
+  static async admin(req, res) {
+    try {
+      const token = req.cookies.token;
+      res.send("Hola admin");
+    } catch (error) {
+      return res.status(401).json({ error: error.message });
+    }
+  }
 }
 
 module.exports = UserControllers;
