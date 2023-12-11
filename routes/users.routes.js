@@ -8,7 +8,7 @@ const {
 } = require("../middleware/users.middleware");
 
 UserRouter.post("/newUser", newUserValidator, UserControllers.newUser);
-UserRouter.get("/login", loginValidator, UserControllers.login);
+UserRouter.post("/login", loginValidator, UserControllers.login);
 UserRouter.get("/user", UserControllers.user);
 UserRouter.get("/admin", verifyIsAdmin, UserControllers.admin);
 

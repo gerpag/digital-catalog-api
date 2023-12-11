@@ -45,7 +45,7 @@ class UserControllers {
   }
   static async user(req, res) {
     try {
-      const token = req.cookies.token;
+      const token = req.headers.authorization;
 
       if (!token) {
         throw new Error("Token no encontrado en las cookies");

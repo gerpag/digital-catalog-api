@@ -28,6 +28,9 @@ class UserServices {
     if (!isValidPassword) {
       throw new Error("Credenciales inválidas");
     }
+    if (!user.is_admin) {
+      throw new Error("Acceso denegado");
+    }
     return {
       _id: user._id,
       email: user.email,
