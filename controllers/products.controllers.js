@@ -1,4 +1,3 @@
-const Product = require("../models/products.model")
 const ProductServices=require("../services/products.services")
 const multer = require('multer');
 const path = require('path');
@@ -22,6 +21,10 @@ const storage = multer.diskStorage({
         
         console.log('Form Data:', req.body);
 
+        if (!req.file) {
+          return res.status(400).json({ error: 'No image file uploaded.' });
+        }
+
         const {
           image,
           name,
@@ -32,6 +35,7 @@ const storage = multer.diskStorage({
           colour,
           dimensions,
           quantity,
+          
         } = req.body;
   
         const url_img = `/images/${req.file.filename}`;

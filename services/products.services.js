@@ -19,9 +19,10 @@ class ProductServices {
     } = data;
 
     try {
-      if (!name || !category || !subCategory || !material || !description || !colour || !dimensions || !quantity || !url_img) {
-        throw new Error('Debe completar todos los campos');
-      }
+      
+      // if (!image ||!name || !category || !subCategory || !material || !description || !colour || !dimensions || !quantity || !url_img ) {
+      //   throw new Error('Debe completar todos los campos');
+      // }
 
       const newProduct = await Product.create({
         name,
