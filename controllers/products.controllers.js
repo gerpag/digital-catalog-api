@@ -62,13 +62,14 @@ const storage = multer.diskStorage({
     }
   
     static async getProducts(req, res) {
-      const { category, subCategory, colour } = req.query;
+      const { category, subCategory, colour,_id } = req.query;
   
       try {
         const products = await ProductServices.getProducts({
           category,
           subCategory,
           colour,
+          _id
         });
   
         res.status(200).json(products);

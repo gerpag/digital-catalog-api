@@ -50,7 +50,7 @@ class ProductServices {
   }
 
   static async getProducts(data) {
-    const { category, subCategory, colour } = data;
+    const { category, subCategory, colour,_id } = data;
 
     try {
       const searchQuerys = {};
@@ -63,6 +63,9 @@ class ProductServices {
       }
       if (colour) {
         searchQuerys.colour = colour;
+      }
+      if (_id) {
+        searchQuerys._id = _id;
       }
 
       const products = await Product.find(searchQuerys);
