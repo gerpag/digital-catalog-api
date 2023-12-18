@@ -11,5 +11,6 @@ UserRouter.post("/newUser", newUserValidator, UserControllers.newUser);
 UserRouter.post("/login", loginValidator, UserControllers.login);
 UserRouter.get("/user", UserControllers.user);
 UserRouter.get("/admin", verifyIsAdmin, UserControllers.admin);
+UserRouter.get("/logout",UserControllers.logOut)
 
 module.exports = UserRouter;
