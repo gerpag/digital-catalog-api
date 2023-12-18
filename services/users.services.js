@@ -35,7 +35,7 @@ class UserServices {
       _id: user._id,
       email: user.email,
       is_admin: user.is_admin,
-      token: generateJWT(user._id, user.is_admin),
+      token: generateJWT(user._id, user.is_admin,user.email),
     };
   }
   static async verifyAdmin(token) {

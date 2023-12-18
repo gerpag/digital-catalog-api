@@ -38,7 +38,7 @@ const storage = multer.diskStorage({
           
         } = req.body;
   
-        const url_img = `/images/${req.file.filename}`;
+        const url_img = `${req.file.filename}`;
   
         try {
           const newProduct = await ProductServices.addProduct({
