@@ -7,14 +7,14 @@ const productSchema = new mongoose.Schema(
       required: true,
       unique: false,
     },
-    category: {
+    category: [{
       type: String,
       required: true,
-    },
-    sub_category: {
+    }],
+    sub_category: [{
       type: String,
       required: false,
-    },
+    }],
     material: {
       type: String,
       required: true,
@@ -23,10 +23,10 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    colour: {
+    colour: [{
       type: String,
       required: false,
-    },
+    }],
     dimensions: {
       type: String,
       required: true,
@@ -45,10 +45,12 @@ const productSchema = new mongoose.Schema(
         path: String,
       },
     },
-  },
-
- 
+  }
 );
+
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;
+
+
+
