@@ -19,19 +19,15 @@ class ProductServices {
     } = data;
 
     try {
-      
-      // if (!image ||!name || !category || !subCategory || !material || !description || !colour || !dimensions || !quantity || !url_img ) {
-      //   throw new Error('Debe completar todos los campos');
-      // }
-
+     
       const newProduct = await Product.create({
         name,
         image,
-        category,
-        sub_category: subCategory,
+        category: Array.isArray(category) ? category : [category],
+        sub_category: Array.isArray(subCategory) ? subCategory : [subCategory],
         material,
         description,
-        colour: colour,
+        colour: Array.isArray(colour) ? colour : [colour],
         dimensions,
         quantity,
         url_img,
